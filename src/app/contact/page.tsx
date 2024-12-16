@@ -1,8 +1,5 @@
 import ContactUs from "@/components/contact-us";
-import Hero from "@/components/hero";
-import { HEROES } from "@/utils/images";
 import { Divider } from "@nextui-org/react";
-import Image from "next/image";
 import Link from "next/link";
 
 export default function Contact() {
