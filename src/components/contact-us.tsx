@@ -37,13 +37,23 @@ export default function ContactUs() {
               <label htmlFor="email" className="text-xl">
                 Email
               </label>
-              <input id="email" type="email" name="email" className="mx-4 bg-white text-slate-800 p-1" />
+              <input
+                id="email"
+                type="email"
+                name="email"
+                className="mx-4 bg-white text-slate-800 p-1"
+              />
               <ValidationError prefix="Email" field="email" errors={state.errors} />
               <span className="mx-4">OR</span>
               <label htmlFor="phone" className="text-xl">
                 Phone #
               </label>
-              <input id="phone" type="tel" name="phone" className="mx-4 bg-white text-slate-800 p-1" />
+              <input
+                id="phone"
+                type="tel"
+                name="phone"
+                className="mx-4 bg-white text-slate-800 p-1"
+              />
               <ValidationError prefix="Phone Number" field="phone" errors={state.errors} />
             </div>
             <div className="w-full">
@@ -59,7 +69,12 @@ export default function ContactUs() {
               <label htmlFor="name" className="text-xl font-bold">
                 * Your name
               </label>
-              <input id="name" type="text" name="name" className="mx-4 bg-white text-slate-800 p-1" />
+              <input
+                id="name"
+                type="text"
+                name="name"
+                className="mx-4 bg-white text-slate-800 p-1"
+              />
               <ValidationError prefix="Name" field="name" errors={state.errors} />
             </div>
 
