@@ -29,8 +29,8 @@ const {
     <link rel="icon" href="/favicon.ico" />
   </head>
   <body>
-    <main class="light text-foreground bg-background max-w-[1280px] mx-auto font-sans">
-      <Navbar client:load currentPath={Astro.url.pathname} />
+    <Navbar client:load currentPath={Astro.url.pathname} />
+    <main class="light text-foreground bg-background max-w-7xl mx-auto font-sans">
       <slot />
     </main>
   </body>

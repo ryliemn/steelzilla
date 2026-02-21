@@ -34,7 +34,7 @@ interface IProps {
 
 export default function CurbNavbar({ currentPath }: IProps) {
   return (
-    <nav className="border-b border-zinc-500 bg-zinc-400 flex items-center justify-between px-4 h-16">
+    <nav className="sticky top-0 z-50 border-b border-zinc-700 bg-zinc-900 flex items-center justify-between px-4 h-12">
       {/* Left: mobile menu + brand */}
       <div className="flex items-center gap-2">
         <Sheet>
@@ -42,13 +42,13 @@ export default function CurbNavbar({ currentPath }: IProps) {
             <Button
               variant="ghost"
               size="icon"
-              className="md:hidden hover:bg-zinc-300"
+              className="md:hidden text-zinc-300 hover:text-white hover:bg-zinc-800"
               aria-label="Open menu"
             >
               <Menu className="h-5 w-5" />
             </Button>
           </SheetTrigger>
-          <SheetContent side="left" className="bg-zinc-400 border-zinc-500 w-64">
+          <SheetContent side="left" className="bg-zinc-900 border-zinc-700 w-64">
             <SheetTitle className="sr-only">Navigation menu</SheetTitle>
             <nav className="flex flex-col gap-1 mt-4">
               {topLevelItems.map((item) => (
@@ -56,14 +56,14 @@ export default function CurbNavbar({ currentPath }: IProps) {
                   key={item.name}
                   href={item.href}
                   className={cn(
-                    "px-3 py-2 rounded-md font-medium hover:bg-zinc-300 transition-colors",
-                    currentPath === item.href && "bg-zinc-300",
+                    "px-3 py-2 rounded-md font-medium text-zinc-300 hover:text-amber-400 hover:bg-zinc-800 transition-colors",
+                    currentPath === item.href && "text-amber-400",
                   )}
                 >
                   {item.name}
                 </a>
               ))}
-              <div className="px-3 py-2 font-medium text-zinc-700 text-sm uppercase tracking-wide mt-2">
+              <div className="px-3 py-2 font-medium text-zinc-500 text-xs uppercase tracking-widest mt-2">
                 Gallery
               </div>
               <div className="pl-4 flex flex-col gap-1">
@@ -72,8 +72,8 @@ export default function CurbNavbar({ currentPath }: IProps) {
                     key={si.name}
                     href={si.href}
                     className={cn(
-                      "px-3 py-2 rounded-md hover:bg-zinc-300 transition-colors text-sm",
-                      currentPath === si.href && "bg-zinc-300",
+                      "px-3 py-2 rounded-md text-zinc-300 hover:text-amber-400 hover:bg-zinc-800 transition-colors text-sm",
+                      currentPath === si.href && "text-amber-400",
                     )}
                   >
                     {si.name}
@@ -84,7 +84,7 @@ export default function CurbNavbar({ currentPath }: IProps) {
           </SheetContent>
         </Sheet>
 
-        <h1 className="text-2xl font-semibold tracking-wider">STEELZILLA</h1>
+        <h1 className="text-2xl font-bold tracking-[0.2em] text-white">STEELZILLA</h1>
       </div>
 
       {/* Center: desktop nav */}
@@ -95,8 +95,8 @@ export default function CurbNavbar({ currentPath }: IProps) {
               href="/"
               className={cn(
                 navigationMenuTriggerStyle(),
-                "bg-transparent hover:bg-zinc-300",
-                currentPath === "/" && "bg-zinc-300",
+                "bg-transparent text-zinc-300 hover:text-amber-400 hover:bg-transparent focus:bg-transparent",
+                currentPath === "/" && "text-amber-400",
               )}
             >
               Home
@@ -104,19 +104,19 @@ export default function CurbNavbar({ currentPath }: IProps) {
           </NavigationMenuItem>
 
           <NavigationMenuItem>
-            <NavigationMenuTrigger className="bg-transparent hover:bg-zinc-300">
+            <NavigationMenuTrigger className="bg-transparent text-zinc-300 hover:text-amber-400 hover:bg-transparent focus:bg-transparent data-[state=open]:bg-transparent data-[state=open]:text-amber-400">
               Gallery
             </NavigationMenuTrigger>
             <NavigationMenuContent>
-              <ul className="w-52 p-2 bg-zinc-600">
+              <ul className="w-52 p-2 bg-zinc-900 border border-zinc-700 rounded-md shadow-lg">
                 {gallerySubitems.map((si) => (
                   <li key={si.name}>
                     <NavigationMenuLink asChild>
                       <a
                         href={si.href}
                         className={cn(
-                          "block px-3 py-2 rounded-md text-white text-sm hover:bg-zinc-500 transition-colors",
-                          currentPath === si.href && "bg-zinc-500",
+                          "block px-3 py-2 rounded-md text-zinc-300 text-sm hover:text-amber-400 hover:bg-zinc-800 transition-colors",
+                          currentPath === si.href && "text-amber-400",
                         )}
                       >
                         {si.name}
@@ -133,8 +133,8 @@ export default function CurbNavbar({ currentPath }: IProps) {
               href="/contact"
               className={cn(
                 navigationMenuTriggerStyle(),
-                "bg-transparent hover:bg-zinc-300",
-                currentPath === "/contact" && "bg-zinc-300",
+                "bg-transparent text-zinc-300 hover:text-amber-400 hover:bg-transparent focus:bg-transparent",
+                currentPath === "/contact" && "text-amber-400",
               )}
             >
               Contact
@@ -147,9 +147,9 @@ export default function CurbNavbar({ currentPath }: IProps) {
       <Button
         asChild
         variant="outline"
-        className="bg-zinc-800 text-white border-zinc-800 hover:bg-zinc-700 hover:text-white text-xs font-bold"
+        className="bg-amber-600 text-white border-amber-600 hover:bg-amber-500 hover:text-white hover:border-amber-500 text-xs font-bold tracking-wider"
       >
-        <a href="tel:12538205600">CALL OR TEXT</a>
+        <a href="sms:12538205600">CALL OR TEXT</a>
       </Button>
     </nav>
   );

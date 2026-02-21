@@ -31,7 +31,7 @@ export default function ContactUs() {
           </h1>
           <form
             onSubmit={handleSubmit}
-            className="flex flex-col items-center space-y-4 py-4 my-4 max-w-[650px]"
+            className="flex flex-col items-center space-y-4 py-4 my-4 max-w-162.5"
           >
             <div className="flex md:flex-row flex-col items-center">
               <label htmlFor="email" className="text-xl">
