@@ -1,152 +1,156 @@
 "use client";
 
+import { Menu } from "lucide-react";
+import { Button } from "@/components/ui/button";
 import {
-  Navbar,
-  NavbarBrand,
-  NavbarContent,
-  NavbarItem,
-  Link,
-  Button,
-  NavbarMenuToggle,
-  NavbarMenu,
-  NavbarMenuItem,
-  Dropdown,
-  DropdownTrigger,
-  DropdownMenu,
-  DropdownItem,
-} from "@nextui-org/react";
-import Image from "next/image";
-import { usePathname } from "next/navigation";
+  NavigationMenu,
+  NavigationMenuContent,
+  NavigationMenuItem,
+  NavigationMenuLink,
+  NavigationMenuList,
+  NavigationMenuTrigger,
+  navigationMenuTriggerStyle,
+} from "@/components/ui/navigation-menu";
+import { Sheet, SheetContent, SheetTitle, SheetTrigger } from "@/components/ui/sheet";
+import { cn } from "@/lib/utils";
 
-const menuItems = [
-  {
-    name: "Home",
-    href: "/",
-  },
-  {
-    name: "Gallery",
-    subitems: [
-      {
-        name: "Guitars & Music",
-        href: "/gallery-guitars-music",
-      },
-      {
-        name: "PNW Life",
-        href: "/gallery-pnw",
-      },
-      {
-        name: "Commemorating Life Events",
-        href: "/gallery-life-events",
-      },
-      {
-        name: "Custom Projects",
-        href: "/gallery-custom-projects",
-      },
-      {
-        name: "Transportation",
-        href: "/gallery-transportation",
-      },
-      {
-        name: "USA",
-        href: "/gallery-usa",
-      },
-    ],
-  },
-  {
-    name: "Contact",
-    href: "/contact",
-  },
+const gallerySubitems = [
+  { name: "Guitars & Music", href: "/gallery-guitars-music" },
+  { name: "PNW Life", href: "/gallery-pnw" },
+  { name: "Commemorating Life Events", href: "/gallery-life-events" },
+  { name: "Custom Projects", href: "/gallery-custom-projects" },
+  { name: "Transportation", href: "/gallery-transportation" },
+  { name: "USA", href: "/gallery-usa" },
 ];
 
-export default function CurbNavbar() {
-  const pathname = usePathname();
+const topLevelItems = [
+  { name: "Home", href: "/" },
+  { name: "Contact", href: "/contact" },
+];
 
+interface IProps {
+  currentPath: string;
+}
+
+export default function CurbNavbar({ currentPath }: IProps) {
   return (
-    <Navbar isBordered className="bg-zinc-400">
-      <NavbarContent>
-        <NavbarMenuToggle className="md:hidden" />
-        <NavbarBrand>
-          <h1 className="text-2xl font-semibold tracking-wider">STEELZILLA</h1>
-        </NavbarBrand>
-      </NavbarContent>
-      <NavbarContent justify="center" className="hidden md:flex">
-        {menuItems.map((mi) => {
-          if (!mi.subitems) {
-            return (
-              <NavbarItem key={mi.name} isActive={pathname === mi.href}>
-                <Link color="foreground" href={mi.href}>
-                  {mi.name}
-                </Link>
-              </NavbarItem>
-            );
-          } else {
-            return (
-              <Dropdown key={mi.name} className="bg-zinc-600">
-                <NavbarItem isActive={pathname === mi.href}>
-                  <DropdownTrigger>
-                    <Button
-                      disableRipple
-                      radius="sm"
-                      className="p-0 bg-transparent data-[hover=true]:bg-transparent text-md"
-                      variant="light"
-                    >
-                      {mi.name}
-                    </Button>
-                  </DropdownTrigger>
-                </NavbarItem>
-                <DropdownMenu className="w-[240px]">
-                  {mi.subitems.map((si) => {
-                    return (
-                      <DropdownItem key={si.name} href={si.href}>
-                        <Link color="foreground" className="text-white">
-                          {si.name}
-                        </Link>
-                      </DropdownItem>
-                    );
-                  })}
-                </DropdownMenu>
-              </Dropdown>
-            );
-          }
-        })}
-      </NavbarContent>
-      <NavbarContent justify="end">
-        <Button
-          as={Link}
-          href="tel:12538205600"
-          variant="bordered"
-          className="w-30 text-xs text-wrap text-center font-bold flex-col gap-0 bg-zinc-800 text-white"
-        >
-          <div>CALL OR TEXT</div>
-        </Button>
-      </NavbarContent>
-      <NavbarMenu>
-        {menuItems.map((mi) => {
-          if (!mi.subitems) {
-            return (
-              <NavbarMenuItem key={mi.name}>
-                <Link color="foreground" href={mi.href}>
-                  {mi.name}
-                </Link>
-              </NavbarMenuItem>
-            );
-          } else {
-            return (
-              <div className="pl-4" key={mi.name}>
-                {mi.subitems.map((si) => {
-                  return (
-                    <NavbarMenuItem key={si.name}>
-                      <Link color="foreground" href={si.href}>
-                        Gallery - {si.name}
-                      </Link>
-                    </NavbarMenuItem>
-                  );
-                })}
+    <nav className="border-b border-zinc-500 bg-zinc-400 flex items-center justify-between px-4 h-16">
+      {/* Left: mobile menu + brand */}
+      <div className="flex items-center gap-2">
+        <Sheet>
+          <SheetTrigger asChild>
+            <Button
+              variant="ghost"
+              size="icon"
+              className="md:hidden hover:bg-zinc-300"
+              aria-label="Open menu"
+            >
+              <Menu className="h-5 w-5" />
+            </Button>
+          </SheetTrigger>
+          <SheetContent side="left" className="bg-zinc-400 border-zinc-500 w-64">
+            <SheetTitle className="sr-only">Navigation menu</SheetTitle>
+            <nav className="flex flex-col gap-1 mt-4">
+              {topLevelItems.map((item) => (
+                <a
+                  key={item.name}
+                  href={item.href}
+                  className={cn(
+                    "px-3 py-2 rounded-md font-medium hover:bg-zinc-300 transition-colors",
+                    currentPath === item.href && "bg-zinc-300",
+                  )}
+                >
+                  {item.name}
+                </a>
+              ))}
+              <div className="px-3 py-2 font-medium text-zinc-700 text-sm uppercase tracking-wide mt-2">
+                Gallery
               </div>
-            );
-          }
-        })}
-      </NavbarMenu>
-    </Navbar>
+              <div className="pl-4 flex flex-col gap-1">
+                {gallerySubitems.map((si) => (
+                  <a
+                    key={si.name}
+                    href={si.href}
+                    className={cn(
+                      "px-3 py-2 rounded-md hover:bg-zinc-300 transition-colors text-sm",
+                      currentPath === si.href && "bg-zinc-300",
+                    )}
+                  >
+                    {si.name}
+                  </a>
+                ))}
+              </div>
+            </nav>
+          </SheetContent>
+        </Sheet>
+
+        <h1 className="text-2xl font-semibold tracking-wider">STEELZILLA</h1>
+      </div>
+
+      {/* Center: desktop nav */}
+      <NavigationMenu className="hidden md:flex">
+        <NavigationMenuList>
+          <NavigationMenuItem>
+            <NavigationMenuLink
+              href="/"
+              className={cn(
+                navigationMenuTriggerStyle(),
+                "bg-transparent hover:bg-zinc-300",
+                currentPath === "/" && "bg-zinc-300",
+              )}
+            >
+              Home
+            </NavigationMenuLink>
+          </NavigationMenuItem>
+
+          <NavigationMenuItem>
+            <NavigationMenuTrigger className="bg-transparent hover:bg-zinc-300">
+              Gallery
+            </NavigationMenuTrigger>
+            <NavigationMenuContent>
+              <ul className="w-52 p-2 bg-zinc-600">
+                {gallerySubitems.map((si) => (
+                  <li key={si.name}>
+                    <NavigationMenuLink asChild>
+                      <a
+                        href={si.href}
+                        className={cn(
+                          "block px-3 py-2 rounded-md text-white text-sm hover:bg-zinc-500 transition-colors",
+                          currentPath === si.href && "bg-zinc-500",
+                        )}
+                      >
+                        {si.name}
+                      </a>
+                    </NavigationMenuLink>
+                  </li>
+                ))}
+              </ul>
+            </NavigationMenuContent>
+          </NavigationMenuItem>
+
+          <NavigationMenuItem>
+            <NavigationMenuLink
+              href="/contact"
+              className={cn(
+                navigationMenuTriggerStyle(),
+                "bg-transparent hover:bg-zinc-300",
+                currentPath === "/contact" && "bg-zinc-300",
+              )}
+            >
+              Contact
+            </NavigationMenuLink>
+          </NavigationMenuItem>
+        </NavigationMenuList>
+      </NavigationMenu>
+
+      {/* Right: call button */}
+      <Button
+        asChild
+        variant="outline"
+        className="bg-zinc-800 text-white border-zinc-800 hover:bg-zinc-700 hover:text-white text-xs font-bold"
+      >
+        <a href="tel:12538205600">CALL OR TEXT</a>
+      </Button>
+    </nav>
   );
 }

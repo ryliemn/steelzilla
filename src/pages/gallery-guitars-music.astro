@@ -1,0 +1,20 @@
+---
+import Layout from '../layouts/Layout.astro';
+import GalleryContainer from '../components/gallery-container';
+import ContactUs from '../components/contact-us';
+import { MUSIC_AND_GUITARS_IMAGES } from '../utils/images';
+
+import 'react-photo-album/rows.css';
+import 'yet-another-react-lightbox/styles.css';
+---
+
+<Layout title="Guitars & Music | Steelzilla">
+  <div class="flex flex-col items-center">
+    <GalleryContainer
+      client:load
+      galleryRef={MUSIC_AND_GUITARS_IMAGES}
+      title="Guitars & Music"
+    />
+    <ContactUs client:load />
+  </div>
+</Layout>
