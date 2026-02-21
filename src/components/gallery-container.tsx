@@ -1,15 +1,8 @@
-import { USA_IMAGES } from "@/utils/images";
-import { Divider } from "@nextui-org/react";
-import Image from "next/image";
 import { useState } from "react";
-import {
-  Photo,
-  RenderImageContext,
-  RenderImageProps,
-  RowsPhotoAlbum,
-} from "react-photo-album";
+import { RowsPhotoAlbum } from "react-photo-album";
+import type { Photo, RenderImageContext, RenderImageProps } from "react-photo-album";
 import Lightbox from "yet-another-react-lightbox";
-import NextJsLightboxImage from "./next-js-lightbox-image";
+import LightboxImage from "./LightboxImage";
 
 interface IProps {
   galleryRef: Photo[];
@@ -21,20 +14,16 @@ export default function GalleryContainer({ galleryRef, title }: IProps) {
 
   return (
     <div className="flex flex-col items-center min-w-full">
-      <h1 className="text-5xl my-4 uppercase tracking-[.1em] text-center">
-        {title}
-      </h1>
-      <Divider />
+      <h1 className="text-5xl my-4 uppercase tracking-[.1em] text-center">{title}</h1>
+      <hr className="w-full border-zinc-200" />
       <div className="h-auto w-full px-8 my-4">
         <RowsPhotoAlbum
           photos={galleryRef}
-          render={{ image: renderNextImage }}
+          render={{ image: renderImage }}
           defaultContainerWidth={1200}
           sizes={{
             size: "1168px",
-            sizes: [
-              { viewport: "(max-width: 1200px)", size: "calc(100vw - 32px)" },
-            ],
+            sizes: [{ viewport: "(max-width: 1200px)", size: "calc(100vw - 32px)" }],
           }}
           onClick={({ index: current }) => setLightboxIdx(current)}
         />
@@ -44,15 +33,15 @@ export default function GalleryContainer({ galleryRef, title }: IProps) {
         open={curLightboxIdx >= 0}
         close={() => setLightboxIdx(-1)}
         slides={galleryRef}
-        render={{ slide: NextJsLightboxImage }}
+        render={{ slide: LightboxImage }}
       />
     </div>
   );
 }
 
-function renderNextImage(
-  { alt = "", title, sizes }: RenderImageProps,
-  { photo, width, height }: RenderImageContext
+function renderImage(
+  { alt = "", title, sizes: _sizes }: RenderImageProps,
+  { photo, width, height }: RenderImageContext,
 ) {
   return (
     <div
@@ -62,7 +51,18 @@ function renderNextImage(
         aspectRatio: `${width} / ${height}`,
       }}
     >
-      <Image fill src={photo.src} alt={alt} title={title} sizes={sizes} />
+      <img
+        src={photo.src}
+        alt={alt}
+        title={title}
+        style={{
+          position: "absolute",
+          inset: 0,
+          width: "100%",
+          height: "100%",
+          objectFit: "cover",
+        }}
+      />
     </div>
   );
 }
