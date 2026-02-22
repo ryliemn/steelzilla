@@ -1,6 +1,6 @@
 ---
-import Navbar from '../components/navbar';
-import '../styles/globals.css';
+import Navbar from "../components/navbar";
+import "../styles/globals.css";
 
 interface Props {
   title?: string;
@@ -8,12 +8,12 @@ interface Props {
 }
 
 const {
-  title = 'Steelzilla',
-  description = 'CNC plasma cut, hand-finished metal artwork',
+  title = "Steelzilla",
+  description = "CNC plasma cut, hand-finished metal artwork",
 } = Astro.props;
 ---
 
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -30,7 +30,9 @@ const {
   </head>
   <body>
     <Navbar client:load currentPath={Astro.url.pathname} />
-    <main class="light text-foreground bg-background max-w-7xl mx-auto font-sans">
+    <main
+      class="light text-foreground bg-background max-w-7xl mx-auto font-sans"
+    >
       <slot />
     </main>
   </body>

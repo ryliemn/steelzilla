@@ -9,7 +9,7 @@ interface Props {
 const { imgSrc, alt, text, subtext } = Astro.props;
 ---
 
-<div class="w-full h-[250px] md:h-[750px] flex justify-center items-center">
+<div class="w-full h-62.5 md:h-187.5 flex justify-center items-center">
   <div class="relative w-full h-full">
     <img
       src={imgSrc}
@@ -17,10 +17,12 @@ const { imgSrc, alt, text, subtext } = Astro.props;
       style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover;"
     />
   </div>
-  {(text || subtext) && (
-    <div class="absolute backdrop-brightness-50 p-2 space-y-4">
-      <h1 class="font-semibold text-zinc-100 text-3xl md:text-5xl">{text}</h1>
-      <h2 class="font-light text-zinc-100 text-xl md:text-3xl">{subtext}</h2>
-    </div>
-  )}
+  {
+    (text || subtext) && (
+      <div class="absolute backdrop-brightness-50 p-2 space-y-4">
+        <h1 class="font-semibold text-zinc-100 text-3xl md:text-5xl">{text}</h1>
+        <h2 class="font-light text-zinc-100 text-xl md:text-3xl">{subtext}</h2>
+      </div>
+    )
+  }
 </div>

@@ -11,7 +11,12 @@ import {
   NavigationMenuTrigger,
   navigationMenuTriggerStyle,
 } from "@/components/ui/navigation-menu";
-import { Sheet, SheetContent, SheetTitle, SheetTrigger } from "@/components/ui/sheet";
+import {
+  Sheet,
+  SheetContent,
+  SheetTitle,
+  SheetTrigger,
+} from "@/components/ui/sheet";
 import { cn } from "@/lib/utils";
 
 const gallerySubitems = [
@@ -48,7 +53,10 @@ export default function CurbNavbar({ currentPath }: IProps) {
               <Menu className="h-5 w-5" />
             </Button>
           </SheetTrigger>
-          <SheetContent side="left" className="bg-zinc-900 border-zinc-700 w-64">
+          <SheetContent
+            side="left"
+            className="bg-zinc-900 border-zinc-700 w-64"
+          >
             <SheetTitle className="sr-only">Navigation menu</SheetTitle>
             <nav className="flex flex-col gap-1 mt-4">
               {topLevelItems.map((item) => (
@@ -84,7 +92,9 @@ export default function CurbNavbar({ currentPath }: IProps) {
           </SheetContent>
         </Sheet>
 
-        <h1 className="text-2xl font-bold tracking-[0.2em] text-white">STEELZILLA</h1>
+        <h1 className="text-2xl font-bold tracking-[0.2em] text-white">
+          STEELZILLA
+        </h1>
       </div>
 
       {/* Center: desktop nav */}

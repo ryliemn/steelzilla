@@ -23,7 +23,9 @@ export default function ContactUs() {
         </a>
       </div>
       {state.succeeded ? (
-        <p className="text-3xl">Thanks for reaching out! We will be in contact soon.</p>
+        <p className="text-3xl">
+          Thanks for reaching out! We will be in contact soon.
+        </p>
       ) : (
         <div className="w-full mx-4 flex flex-col items-center">
           <h1 className="text-2xl md:text-5xl uppercase text-center tracking-wider mx-16">
@@ -43,7 +45,11 @@ export default function ContactUs() {
                 name="email"
                 className="mx-4 bg-white text-slate-800 p-1"
               />
-              <ValidationError prefix="Email" field="email" errors={state.errors} />
+              <ValidationError
+                prefix="Email"
+                field="email"
+                errors={state.errors}
+              />
               <span className="mx-4">OR</span>
               <label htmlFor="phone" className="text-xl">
                 Phone #
@@ -54,7 +60,11 @@ export default function ContactUs() {
                 name="phone"
                 className="mx-4 bg-white text-slate-800 p-1"
               />
-              <ValidationError prefix="Phone Number" field="phone" errors={state.errors} />
+              <ValidationError
+                prefix="Phone Number"
+                field="phone"
+                errors={state.errors}
+              />
             </div>
             <div className="w-full">
               <textarea
@@ -63,7 +73,11 @@ export default function ContactUs() {
                 placeholder="What would you like to steel?"
                 className="w-full md:h-20 h-28 bg-white text-slate-800 p-1"
               />
-              <ValidationError prefix="Message" field="message" errors={state.errors} />
+              <ValidationError
+                prefix="Message"
+                field="message"
+                errors={state.errors}
+              />
             </div>
             <div>
               <label htmlFor="name" className="text-xl font-bold">
@@ -75,7 +89,11 @@ export default function ContactUs() {
                 name="name"
                 className="mx-4 bg-white text-slate-800 p-1"
               />
-              <ValidationError prefix="Name" field="name" errors={state.errors} />
+              <ValidationError
+                prefix="Name"
+                field="name"
+                errors={state.errors}
+              />
             </div>
 
             <Button type="submit" disabled={state.submitting}>
