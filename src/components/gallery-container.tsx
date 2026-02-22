@@ -5,11 +5,13 @@ import type {
   RenderImageContext,
   RenderImageProps,
 } from "react-photo-album";
+
+type GalleryPhoto = Photo & { thumbnail: string };
 import Lightbox from "yet-another-react-lightbox";
 import LightboxImage from "./LightboxImage";
 
 interface IProps {
-  galleryRef: Photo[];
+  galleryRef: GalleryPhoto[];
   title: string;
 }
 
@@ -23,7 +25,7 @@ export default function GalleryContainer({ galleryRef, title }: IProps) {
       </h1>
       <hr className="w-full border-zinc-200" />
       <div className="h-auto w-full px-8 my-4">
-        <RowsPhotoAlbum
+        <RowsPhotoAlbum<GalleryPhoto>
           photos={galleryRef}
           render={{ image: renderImage }}
           defaultContainerWidth={1200}
@@ -49,7 +51,7 @@ export default function GalleryContainer({ galleryRef, title }: IProps) {
 
 function renderImage(
   { alt = "", title, sizes: _sizes }: RenderImageProps,
-  { photo, width, height }: RenderImageContext,
+  { photo, width, height }: RenderImageContext<GalleryPhoto>,
 ) {
   return (
     <div
@@ -60,7 +62,7 @@ function renderImage(
       }}
     >
       <img
-        src={photo.src}
+        src={photo.thumbnail}
         alt={alt}
         title={title}
         style={{

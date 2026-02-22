@@ -92,9 +92,11 @@ export default function CurbNavbar({ currentPath }: IProps) {
           </SheetContent>
         </Sheet>
 
-        <h1 className="text-2xl font-bold tracking-[0.2em] text-white">
-          STEELZILLA
-        </h1>
+        <a href="/">
+          <h1 className="text-2xl font-bold tracking-[0.2em] text-white">
+            STEELZILLA
+          </h1>
+        </a>
       </div>
 
       {/* Center: desktop nav */}

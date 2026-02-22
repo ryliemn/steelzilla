@@ -21,6 +21,7 @@
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
     "lucide-react": "^0.575.0",
+    "probe-image-size": "^7.2.3",
     "react": "^19",
     "react-dom": "^19",
     "react-photo-album": "^3.5.1",
@@ -29,10 +30,11 @@
     "yet-another-react-lightbox": "^3.29.1"
   },
   "devDependencies": {
+    "@tailwindcss/vite": "^4.2.0",
     "@types/node": "^25",
+    "@types/probe-image-size": "^7.2.5",
     "@types/react": "^19",
     "@types/react-dom": "^19",
-    "@tailwindcss/vite": "^4.2.0",
     "oxfmt": "^0.34.0",
     "oxlint": "^1.49.0",
     "tailwindcss": "^4.2.0",
