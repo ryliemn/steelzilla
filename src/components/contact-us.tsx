@@ -26,7 +26,7 @@ export default function ContactUs() {
         </p>
       ) : (
         <div className="w-full mx-4 flex flex-col items-center">
-          <h1 className="text-2xl md:text-5xl uppercase text-center tracking-wider mx-16">
+          <h1 className="text-2xl md:text-5xl uppercase text-center tracking-wider mx-4 md:mx-16">
             Contact us with your custom metal art ideas
           </h1>
           <form

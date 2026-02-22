@@ -34,7 +34,7 @@ interface IProps {
 
 export default function CurbNavbar({ currentPath }: IProps) {
   return (
-    <nav className="sticky top-0 z-50 border-b border-zinc-700 bg-zinc-900 flex items-center justify-between px-4 h-12">
+    <nav className="sticky top-0 z-50 border-b border-zinc-700 bg-zinc-900 flex items-center justify-between px-4 min-h-12 py-2 gap-2">
       {/* Left: mobile menu + brand */}
       <div className="flex items-center gap-2">
         <Sheet>
@@ -88,7 +88,7 @@ export default function CurbNavbar({ currentPath }: IProps) {
         </Sheet>
 
         <a href="/">
-          <h1 className="text-2xl font-bold tracking-[0.2em] text-white">
+          <h1 className="text-lg sm:text-2xl font-bold tracking-wide sm:tracking-[0.2em] text-white">
             STEELZILLA
           </h1>
         </a>
@@ -154,7 +154,7 @@ export default function CurbNavbar({ currentPath }: IProps) {
       <Button
         asChild
         variant="outline"
-        className="bg-amber-600 text-white border-amber-600 hover:bg-amber-500 hover:text-white hover:border-amber-500 text-xs font-bold tracking-wider"
+        className="shrink-0 bg-amber-600 text-white border-amber-600 hover:bg-amber-500 hover:text-white hover:border-amber-500 text-xs font-bold tracking-wider"
       >
         <a href="sms:12538205600">CALL OR TEXT</a>
       </Button>
