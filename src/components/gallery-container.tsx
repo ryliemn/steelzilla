@@ -24,7 +24,7 @@ export default function GalleryContainer({ galleryRef, title }: IProps) {
         {title}
       </h1>
       <hr className="w-full border-zinc-200" />
-      <div className="h-auto w-full px-8 my-4">
+      <div className="h-auto w-full px-2 sm:px-8 my-4">
         <RowsPhotoAlbum<GalleryPhoto>
           photos={galleryRef}
           render={{ image: renderImage }}
