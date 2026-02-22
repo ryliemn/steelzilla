@@ -56,6 +56,12 @@ export const USA_SHAPE = {
   alt: "Metal art of the shape of the USA, with the american flag interpolated into it",
 };
 
+export const ROUND_EAGLE_FLAG = {
+  src: cdnUrl("ef0226e8-7db2-4689-0cc3-bd6334d89c00"),
+  name: "round-eagle-flag",
+  alt: "Metal art of an eagle with the american flag in a round design",
+};
+
 export const USA_IMAGES = [
   SPACE_FORCE_LOGO,
   COAST_GUARD_LOGO,
@@ -63,7 +69,14 @@ export const USA_IMAGES = [
   POW_MIA_LOGO,
   NAVY_LOGO,
   USA_SHAPE,
+  ROUND_EAGLE_FLAG,
 ];
+
+export const STYX_GUITARS = {
+  src: cdnUrl("d736295f-5d28-4be3-e254-f5eb3de89b00"),
+  name: "styx-guitars",
+  alt: "Metal art of Styx with guitars",
+};
 
 export const BEATLES_FACES = {
   src: cdnUrl("39a365df-3da5-4634-d4a9-597289889800"),
@@ -132,6 +145,7 @@ export const LYNYRD_SKYNYRD_LOGO = {
 };
 
 export const MUSIC_AND_GUITARS_IMAGES = [
+  STYX_GUITARS,
   BEATLES_FACES,
   TOWER_RECORDS,
   BEATLES_LOGO,

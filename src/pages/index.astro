@@ -1,9 +1,13 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import Hero from "../components/Hero.astro";
-import ImgWithText from "../components/ImgWithText.astro";
 import ContactUs from "../components/contact-us";
-import { EAGLE_FLAG, SEATTLE_VAN_GOGH, YIN_YANG_SKY } from "../utils/images";
+import {
+  SEATTLE_VAN_GOGH,
+  ROUND_EAGLE_FLAG,
+  STYX_GUITARS,
+  GONE_SQUATCHIN,
+} from "../utils/images";
 ---
 
 <Layout>
@@ -27,22 +31,55 @@ import { EAGLE_FLAG, SEATTLE_VAN_GOGH, YIN_YANG_SKY } from "../utils/images";
         CNC plasma cut, hand-finished metal artwork
       </div>
     </div>
-    <div
-      class="w-full flex flex-row flex-wrap justify-center gap-x-24 gap-y-12 py-4"
-    >
-      <ImgWithText
-        imageUrl={YIN_YANG_SKY.src}
-        alt={YIN_YANG_SKY.alt}
-        header="materials? tech specs?"
-        body="x gauge steel, plasma cut, hand finishing, acids, painting, torching"
-      />
-      <ImgWithText
-        imageUrl={EAGLE_FLAG.src}
-        alt={EAGLE_FLAG.alt}
-        header="customization"
-        body="highlight customizations"
-      />
+
+    <div class="px-4 pb-8 max-w-4xl mx-auto w-full">
+      <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
+        {
+          [
+            {
+              href: "/gallery-usa",
+              label: "USA",
+              src: ROUND_EAGLE_FLAG.src,
+              alt: ROUND_EAGLE_FLAG.alt,
+            },
+            {
+              href: "/gallery-guitars-music",
+              label: "Rock Stars & Guitars",
+              src: STYX_GUITARS.src,
+              alt: STYX_GUITARS.alt,
+            },
+            {
+              href: "/gallery-pnw",
+              label: "PNW Life",
+              src: GONE_SQUATCHIN.src,
+              alt: GONE_SQUATCHIN.alt,
+            },
+          ].map(({ href, label, src, alt }) => (
+            <a
+              href={href}
+              class="group relative overflow-hidden rounded-xl shadow-md aspect-square block"
+            >
+              <img
+                src={src}
+                alt={alt}
+                class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
+              />
+              <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent transition-opacity duration-300" />
+              <div class="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors duration-300" />
+              <div class="absolute bottom-0 left-0 right-0 p-3">
+                <p class="text-white font-bold text-sm md:text-base leading-tight">
+                  {label}
+                </p>
+                <p class="text-white/70 text-xs mt-0.5 flex items-center gap-1 translate-y-1 opacity-0 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-300">
+                  View gallery <span aria-hidden="true">→</span>
+                </p>
+              </div>
+            </a>
+          ))
+        }
+      </div>
     </div>
+
     <ContactUs client:load />
   </div>
 </Layout>
