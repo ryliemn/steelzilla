@@ -20,9 +20,6 @@ import { cn } from "@/lib/utils";
 const gallerySubitems = [
   { name: "Guitars & Music", href: "/gallery-guitars-music" },
   { name: "PNW Life", href: "/gallery-pnw" },
-  { name: "Commemorating Life Events", href: "/gallery-life-events" },
-  { name: "Custom Projects", href: "/gallery-custom-projects" },
-  { name: "Transportation", href: "/gallery-transportation" },
   { name: "USA", href: "/gallery-usa" },
 ];
 
